@@ -1,0 +1,32 @@
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <h2 class="ml-2">Profesores</h2>
+            <img [routerLink]="['create',-1]" class="mx-3" src="../../../assets/plusTeacherParent.png" alt="" style="width: 32px; cursor: pointer;">
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Progreso</th>
+                    <th>Teléfono</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let teacher of teachers">
+                    <td>{{teacher.name}}</td>
+                    <td>{{teacher.lastName}}</td>
+                    <td></td>
+                    <td>{{teacher.phoneNumber}}</td>
+                    <td><button (click)="editTeacher(teacher)" class="btn btn-primary btn-sm">Editar</button></td>
+                    <td><img (click)="deleteTeacher(teacher.id)" src="../../../assets/close.png" alt="" style="width: 24px; cursor: pointer;"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

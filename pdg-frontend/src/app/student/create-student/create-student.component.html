@@ -1,0 +1,92 @@
+<div class="card col-sm-10 mx-auto mt-5">
+    <div class="card-header text-center">
+        <h3>Nuevo Estudiante</h3>
+    </div>
+    <div class="card-body mt-3">
+        <form>
+            <div class="form-group row justify-content-center">
+                <label for="identificationDocument" class="col-form-label col-sm-2">Documento de Identificacion</label>
+                <div class="col-sm-6">
+                    <input type="text" [(ngModel)]="student.identificationDocument" class="form-control" name="identificationDocument" >
+                </div>
+            </div>
+            <div class="form-group row justify-content-center">
+                <label for="name" class="col-form-label col-sm-2">Nombre</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="student.name" name="name" >
+                </div>
+            </div>
+            <div class="form-group row justify-content-center">
+                <label for="lastName" class="col-form-label col-sm-2">Apellido</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="student.lastName" name="lastName" >
+                </div>
+            </div>
+            <div class="form-group row justify-content-center">
+                <label for="grade" class="col-form-label col-sm-2">Grado</label>
+                <div class="col-sm-6">
+                    <select name="grade" class="form-control" [(ngModel)]="student.grade">
+                        <option [ngValue]="undefined">--- Seleccionar</option>
+                        <option *ngFor="let grade of grades" [ngValue]="grade">{{grade.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row justify-content-center">
+                <label for="autonomyLevel" class="col-form-label col-sm-2">Nivel de Autonomía</label>
+                <div class="col-sm-6">
+                    <select name="autonomyLevel" class="form-control" [(ngModel)]="student.autonomyLevel">
+                        <option [ngValue]="undefined">--- Seleccionar</option>
+                        <option >Aprendiz</option>
+                    </select>
+                </div>
+            </div>
+            <div class="dropdown-divider"></div>
+            <h3 class="text-center mt-4 mb-3">Acudiente</h3>
+            <div class="form-group row justify-content-center">
+                <label for="parent" class="col-form-label col-sm-2">Acudiente</label>
+                <div class="col-sm-6">
+                    <select name="parent" class="form-control" [(ngModel)]="parent">
+                        <option [ngValue]="undefined">--- Seleccionar</option>
+                        <option *ngFor="let parent of parents" [ngValue]="parent">{{parent.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <p class="text-center">o agregue uno</p>
+            <div class="form-group row justify-content-center">
+                <label for="cedulaP" class="col-form-label col-sm-2">Cédula</label>
+                <div class="col-sm-6">
+                    <input type="text" [(ngModel)]="parent.identificationDocument" class="form-control" name="cedulaP" >
+                </div>
+            </div>
+            <div class="form-group row justify-content-center">
+                <label for="nameP" class="col-form-label col-sm-2">Nombre</label>
+                <div class="col-sm-6">
+                    <input type="text" [(ngModel)]="parent.name" class="form-control" name="nameP" >
+                </div>
+            </div>
+            <div class="form-group row justify-content-center">
+                <label for="lastNameP" class="col-form-label col-sm-2">Apellido</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="parent.lastName" name="lastNameP" >
+                </div>
+            </div>
+            <div class="form-group row justify-content-center">
+                <label for="email" class="col-form-label col-sm-2">Correo</label>
+                <div class="col-sm-6">
+                    <input type="email"  class="form-control" [(ngModel)]="parent.email" name="email" >
+                </div>
+            </div>
+            <div class="form-group row justify-content-center">
+                <label for="phoneNumber" class="col-form-label col-sm-2">Celular</label>
+                <div class="col-sm-6">
+                    <input type="text" [(ngModel)]="parent.phoneNumber" class="form-control" name="phoneNumber" >
+                </div>
+            </div>
+            <div class="form-group row justify-content-center">
+                <div class="col-sm-6">
+                    <button (click)="createStudent()" class="btn btn-primary form-control">Crear</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

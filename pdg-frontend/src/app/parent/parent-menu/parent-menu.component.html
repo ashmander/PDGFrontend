@@ -1,0 +1,4 @@
+<div class="nav flex-column nav-pills ml-5" role="tablist" aria-orientation="vertical" *ngFor="let student of parent.students">
+    <a class="nav-link" id="student" data-toggle="pill" role="tab" 
+        [routerLink]="['student', student.id]" aria-controls="v-pills-home" aria-selected="false">{{student.name}}</a>
+</div>

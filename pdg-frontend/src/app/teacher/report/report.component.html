@@ -1,0 +1,195 @@
+<app-create-assignment *ngIf="course" [course]="course" (updateCourse)="updateCourse($event)"></app-create-assignment>
+<div *ngIf="course" class="card col-sm-6 mx-auto mt-3 mb-3">
+    <div class="card-header bg-info">
+        <h2 class="text-white">Reporte Semanal</h2>
+        <p *ngIf="student" class="text-white">{{student.name}} {{student.lastName}}</p>
+        <p *ngIf="course && course.grade" class="text-white">{{course.grade.name}}</p>
+    </div>
+    <div class="card-body">
+        <form>
+            <div class="form-group row justify-content-center">
+                <div class="col-sm-3">
+                    <mat-form-field>
+                        <input type="text"
+                               placeholder="Añadir asignación"
+                               aria-label="Asignaciones"
+                               matInput
+                               [formControl]="autocompleteControl"
+                               [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete" [displayWith]="showName" (optionSelected)="selectAssignment($event)">
+                          <mat-option *ngFor="let assignment of filteredAssignments | async" [value]="assignment">
+                            {{assignment.name}}
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>
+                </div>
+                <div class="ml-5 d-flex justify-content-center align-items-center">
+                    <span>o agrega una asignación</span>
+                    <img (click)="openModal()" class="ml-3 align-middle" src="../../../assets/plus.png" alt="" style="width: 20px; cursor: pointer;">
+                </div>
+            </div>
+                <table *ngIf="report.assignments.length>0" class="table table-striped table-hover table-sm col-sm-6 mx-auto">
+                    <thead>
+                        <tr>
+                            <th>Asignación</th>
+                            <th >Calificación</th>
+                            <th >Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let assignment of report.assignments">
+                            <td>{{assignment.assignment.name}}</td>
+                            <td><input type="text" value="{{assignment.qualification}}" placeholder="Calificación" (change)="updateQualification(assignment.assignment.id, $event)" class="form-control"></td>
+                            <td><input value="{{assignment.assignmentDate}}" type="date" (change)="updateDate(assignment.assignment.id, $event)" class="form-control"></td>
+                            <td><img (click)="deleteAssignment(assignment)" src="../../../assets/close.png" alt="" style="width: 20px; cursor: pointer;"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            <div class="form-group row">
+                
+                    <label for="generateIdea" class="col-form-label col-sm-4">Generación de Ideas</label>
+                    <div class="col-sm-2">
+                        <select class="form-control" name="generateIdea" [(ngModel)]="report.generateIdea"> 
+                            <option [ngValue]="undefined">---</option>
+                            <option [ngValue]="0">0</option>
+                            <option [ngValue]="1">1</option>
+                            <option [ngValue]="2">2</option>
+                        </select>
+                    </div>
+                
+                
+                    <label for="selfCriticims" class="col-form-label col-sm-4">Autocritica</label>
+                    <div class="col-sm-2">
+                        <select class="form-control" name="selfCriticims" [(ngModel)]="report.selfCriticims"> 
+                            <option [ngValue]="undefined">---</option>
+                            <option [ngValue]="0">0</option>
+                            <option [ngValue]="1">1</option>
+                            <option [ngValue]="2">2</option>
+                        </select>
+                    </div>
+                
+            </div>
+            <div class="form-group row">
+                
+                    <label for="positiveContribution" class="col-form-label col-sm-4">Contribución positiva</label>
+                    <div class="col-sm-2">
+                        <select class="form-control" name="positiveContribution" [(ngModel)]="report.positiveContribution"> 
+                            <option [ngValue]="undefined">---</option>
+                            <option [ngValue]="0">0</option>
+                            <option [ngValue]="1">1</option>
+                            <option [ngValue]="2">2</option>
+                        </select>
+                    </div>
+                
+                
+                    <label for="acceptNewIdeas" class="col-form-label col-sm-4">Aceptar nuevas ideas</label>
+                    <div class="col-sm-2">
+                        <select class="form-control" name="acceptNewIdeas" [(ngModel)]="report.acceptNewIdeas"> 
+                            <option [ngValue]="undefined">---</option>
+                            <option [ngValue]="0">0</option>
+                            <option [ngValue]="1">1</option>
+                            <option [ngValue]="2">2</option>
+                        </select>
+                    </div>
+                
+            </div>
+            <div class="form-group row">
+                
+                    <label for="originalBehavior" class="col-form-label col-sm-4">Comportamiento original</label>
+                    <div class="col-sm-2">
+                        <select class="form-control" name="originalBehavior" [(ngModel)]="report.originalBehavior"> 
+                            <option [ngValue]="undefined">---</option>
+                            <option [ngValue]="0">0</option>
+                            <option [ngValue]="1">1</option>
+                            <option [ngValue]="2">2</option>
+                        </select>
+                    </div>
+                
+                
+                    <label for="classParticipation" class="col-form-label col-sm-4">Participación en clase</label>
+                    <div class="col-sm-2">
+                        <select class="form-control" name="classParticipation" [(ngModel)]="report.classParticipation"> 
+                            <option [ngValue]="undefined">---</option>
+                            <option [ngValue]="0">0</option>
+                            <option [ngValue]="1">1</option>
+                            <option [ngValue]="2">2</option>
+                        </select>
+                    </div>
+                
+            </div>
+            <div class="form-group row">
+                
+                    <label for="askInClass" class="col-form-label col-sm-4">Pregunta en clase</label>
+                    <div class="col-sm-2">
+                        <select class="form-control" name="askInClass" [(ngModel)]="report.askInClass"> 
+                            <option [ngValue]="undefined">---</option>
+                            <option [ngValue]="0">0</option>
+                            <option [ngValue]="1">1</option>
+                            <option [ngValue]="2">2</option>
+                        </select>
+                    </div>
+                
+                
+                    <label for="expressIdeas" class="col-form-label col-sm-4">Expresar ideas</label>
+                    <div class="col-sm-2">
+                        <select class="form-control" name="expressIdeas" [(ngModel)]="report.expressIdeas"> 
+                            <option [ngValue]="undefined">---</option>
+                            <option [ngValue]="0">0</option>
+                            <option [ngValue]="1">1</option>
+                            <option [ngValue]="2">2</option>
+                        </select>
+                    </div>
+                
+            </div>
+            <div class="form-group row">
+                
+                    <label for="perseverance" class="col-form-label col-sm-4">Perseverancia</label>
+                    <div class="col-sm-2">
+                        <select class="form-control" name="perseverance" [(ngModel)]="report.perseverance"> 
+                            <option [ngValue]="undefined">---</option>
+                            <option [ngValue]="0">0</option>
+                            <option [ngValue]="1">1</option>
+                            <option [ngValue]="2">2</option>
+                        </select>
+                    </div>
+                
+            </div>
+            <div class="form-group row justify-content-center mt-2">
+                
+                    <mat-form-field>
+                        <mat-label>Fortaleza</mat-label>
+                        <mat-select (selectionChange)="strengthSelected($event)">
+                          <mat-option [value]="undefined">
+                            --- Seleccionar
+                          </mat-option>
+                          <mat-option *ngFor="let strength of strengths" [value]="strength">
+                            {{strength.name}}
+                          </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                
+            </div>
+            <div *ngIf="report.strengths.length>0">
+                <table class="table table-striped table-hover table-sm col-sm-3 mx-auto">
+                    <thead>
+                        <tr>
+                            <th>Fortaleza</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let strength of report.strengths">
+                            <td>{{strength.name}}</td>
+                            <td><img (click)="deleteStrength(strength)" src="../../../assets/close.png" alt="" style="width: 20px; cursor: pointer;"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="form-group row justify-content-center">
+                <button *ngIf="!report.id else elseBlock" class="btn btn-primary" role="button" (click)='createReport()'>Crear</button>                  
+                <ng-template #elseBlock>
+                    <button class="btn btn-primary" role="button" (click)='updateReport()'>Actualizar</button>
+                </ng-template>
+            </div>
+        </form>
+    </div>
+</div>

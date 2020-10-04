@@ -1,0 +1,35 @@
+<app-admin-student-strength *ngIf="studentSelected" [strengths]=studentSelected.strengths></app-admin-student-strength>
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <h2 class="ml-2">Estudiantes</h2>
+            <img [routerLink]="['create']" class="mx-3" src="../../../assets/studentPlus.png" alt="" style="width: 32px; cursor: pointer;">
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Asistencia</th>
+                    <th>TP</th>
+                    <th>Grado</th>
+                    <th>Fortalezas</th>
+                    <th>Nivel de Autonomía</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of students">
+                    <td>{{student.name}}</td>
+                    <td>{{student.lastName}}</td>
+                    <td></td>
+                    <td></td>
+                    <td *ngIf="student.grade">{{student.grade.name}}</td>
+                    <td><button (click)="showStrengths(student)" class="btn btn-primary btn-sm">Ver</button></td>
+                    <td>{{student.autonomyLevel}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

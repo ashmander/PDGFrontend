@@ -1,0 +1,24 @@
+<app-admin-grade-create (updateGrades)="updateGrades()"></app-admin-grade-create>
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <h2 class="ml-2">Grados</h2>
+            <img (click)="createGrade()" class="mx-3" src="../../../assets/gradePlus.png" alt="" style="width: 32px; cursor: pointer;">
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let grade of grades">
+                    <td>{{grade.name}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

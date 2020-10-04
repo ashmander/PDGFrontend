@@ -1,0 +1,16 @@
+<div class="nav flex-column nav-pills ml-5" role="tablist" aria-orientation="vertical">
+    <a class="nav-link" id="student" data-toggle="pill" role="tab" 
+        [routerLink]="['student']" aria-controls="v-pills-home" aria-selected="false">Estudiantes</a>
+    <a class="nav-link" id="teacher" data-toggle="pill" role="tab" aria-controls="v-pills-profile"
+        [routerLink]="['teacher']" aria-selected="false">Profesores</a>
+    <a class="nav-link" id="subject" data-toggle="pill" role="tab" aria-controls="v-pills-messages"
+        [routerLink]="['subject']" aria-selected="false">Materias</a>
+    <a class="nav-link" id="course" data-toggle="pill" role="tab" aria-controls="v-pills-settings"
+        [routerLink]="[schoolYear.id+'/course']" aria-selected="false">Cursos</a>
+    <a class="nav-link" id="parent" data-toggle="pill" role="tab" aria-controls="v-pills-settings"
+        [routerLink]="['parent']" aria-selected="false">Acudientes</a>
+    <a class="nav-link" id="grade" data-toggle="pill" role="tab" aria-controls="v-pills-settings"
+        [routerLink]="['grade']" aria-selected="false">Grados</a>
+    <a class="nav-link" id="school-year" data-toggle="pill" role="tab" aria-controls="v-pills-settings"
+        [routerLink]="['schoolyear']" aria-selected="false">Años Escolares</a>
+</div>

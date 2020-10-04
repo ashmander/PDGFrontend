@@ -1,0 +1,47 @@
+<div class="card col-sm-10 mx-auto mt-5">
+    <div class="card-header text-center">
+        <h3>Nuevo profesor</h3>
+    </div>
+    <div class="card-body mt-3">
+        <form>
+            <div class="form-group row justify-content-center">
+                <label for="identificationDocument" class="col-form-label col-sm-2">Cédula</label>
+                <div class="col-sm-6">
+                    <input type="text" [(ngModel)]="teacher.identificationDocument" class="form-control" name="identificationDocument" >
+                </div>
+            </div>
+            <div class="form-group row justify-content-center">
+                <label for="name" class="col-form-label col-sm-2">Nombre</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="name" [(ngModel)]="teacher.name">
+                </div>
+            </div>
+            <div class="form-group row justify-content-center">
+                <label for="lastName" class="col-form-label col-sm-2">Apellido</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="lastName" [(ngModel)]="teacher.lastName">
+                </div>
+            </div>
+            <div class="form-group row justify-content-center">
+                <label for="email" class="col-form-label col-sm-2">Correo</label>
+                <div class="col-sm-6">
+                    <input type="email" class="form-control" name="email" [(ngModel)]="teacher.email">
+                </div>
+            </div>
+            <div class="form-group row justify-content-center">
+                <label for="phoneNumber" class="col-form-label col-sm-2">Celular</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="phoneNumber" [(ngModel)]="teacher.phoneNumber">
+                </div>
+            </div>
+            <div class="form-group row justify-content-center">
+                <div class="col-sm-6">
+                    <button *ngIf="!teacher.id else elseBlock" (click)="createTeacher()" role="button" class="btn btn-primary form-control">Crear</button>
+                    <ng-template #elseBlock>
+                        <button class="btn btn-primary" role="button" (click)="updateTeacher()">Actualizar</button>
+                    </ng-template>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

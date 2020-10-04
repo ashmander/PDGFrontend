@@ -1,0 +1,23 @@
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <h2 class="ml-2">Años Escolares</h2>
+            <img class="mx-3" src="../../../assets/schoolYearsPlus.png" alt="" width="32px" height="32px">
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let schoolYear of schoolYears">
+                    <td>{{schoolYear.description}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

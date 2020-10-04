@@ -1,0 +1,35 @@
+<app-admin-course-create *ngIf="courseSelected" [course]="courseSelected" (updateCourses)="uploadCourses()"></app-admin-course-create>
+<app-admin-course-schedules *ngIf="schedulesSelected" [schedules]="schedulesSelected"></app-admin-course-schedules>
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <h2 class="ml-2">Cursos</h2>
+            <img (click)="createCourse()" class="mx-3" src="../../../assets/coursesPlus.png" alt="" style="width: 32px; cursor: pointer;">
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Profesor</th>
+                    <th>Grado</th>
+                    <th>Materia</th>
+                    <th>Horario</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let course of courses">
+                    <td>{{course.teacher.name}}</td>
+                    <td>{{course.grade.name}}</td>
+                    <td>{{course.subject.name}}</td>
+                    <td><button (click)="showSchedule(course.schedules)" class="btn btn-primary btn-sm">Ver</button></td>
+                    <td><button (click)="editCourse(course)" class="btn btn-primary btn-sm">Editar</button></td>
+                    <td><img (click)="deleteCourse(course)" src="../../../assets/close.png" alt="" style="width: 24px; cursor: pointer;"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

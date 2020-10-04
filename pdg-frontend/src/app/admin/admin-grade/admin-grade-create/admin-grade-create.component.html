@@ -1,0 +1,26 @@
+<div class="open-modal animation fadeIn" *ngIf="modalService.modalCreateGrade">
+    <div class="modal" tabindex="-1" role="dialog" style="display: block;">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title">Crear Grado</h2>
+              <button (click)="closeModal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="name" class="col-form-label">Nombre</label>
+                  <input type="text" class="form-control" name="name" [(ngModel)]="grade.name">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" (click)="closeModal()" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="button" (click)="createGrade()" class="btn btn-primary">Crear</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>

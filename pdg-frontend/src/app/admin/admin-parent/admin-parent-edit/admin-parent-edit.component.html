@@ -1,0 +1,52 @@
+<div class="open-modal animation fadeIn" *ngIf="modalService.modalParentEdit">
+    <div class="modal" tabindex="-1" role="dialog" style="display: block;">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title">Acudiente</h2>
+              <button (click)="closeModal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                    <label for="cedula">Cédula</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="cedula" class="form-control" [(ngModel)]="parent.identificationDocument">
+                    </div>
+                </div>
+                  <div class="form-group">
+                      <label for="name">Nombre</label>
+                      <div class="col-sm-6">
+                          <input type="text" name="name" class="form-control" [(ngModel)]="parent.name">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="lastName">Apellido</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="lastName" class="form-control" [(ngModel)]="parent.lastName">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Celular</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="phoneNumber" class="form-control" [(ngModel)]="parent.phoneNumber">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo</label>
+                    <div class="col-sm-6">
+                        <input type="email" name="email" class="form-control" [(ngModel)]="parent.email">
+                    </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" (click)="closeModal()" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" (click)="updateParent()" class="btn btn-primary">Actualizar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>

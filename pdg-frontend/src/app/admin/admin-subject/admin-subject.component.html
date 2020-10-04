@@ -1,0 +1,30 @@
+<app-admin-subject-create *ngIf="subjectSelected" [subject]="subjectSelected" (updateSubjects)="updateSubjecs()"></app-admin-subject-create>
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <h2 class="ml-2">Materias</h2>
+            <img (click)="createSubject()" class="mx-3" src="../../../assets/subjectsPlus.png" alt="" style="width: 32px; cursor: pointer;">
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let subject of subjects">
+                    <td>{{subject.code}}</td>
+                    <td>{{subject.name}}</td>
+                    <td><button (click)="editSubject(subject)" class="btn btn-primary">Editar</button></td>
+                    <td><img (click)="deleteSubject(subject.id)" src="../../../assets/close.png" alt="" style="width: 24px; cursor: pointer;"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
